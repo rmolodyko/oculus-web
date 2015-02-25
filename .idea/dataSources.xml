@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="67282672">
+    <data-source source="LOCAL" name="blog" uuid="9d358e32-d83e-40b2-939e-dc5ece07bbc4">
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\xampp\htdocs\protected\data\blog.db</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

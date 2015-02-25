@@ -1,0 +1,16 @@
+.grid:after{
+    clear:both;
+    content:'';
+    display: table;
+}
+
+[class*='c-']{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float:left;
+}
+
+.clearfix{
+    clear:both;
+}
