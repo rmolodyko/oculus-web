@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table '{{cost_float}}':
  * @property string $id
- * @property string $id_game
  * @property string $id_place
  * @property integer $time_start
  * @property integer $time_finish
@@ -15,11 +14,11 @@
  * @property integer $active
  *
  * The followings are the available model relations:
- * @property Game $idGame
  * @property Place $idPlace
  */
 class CostFloat extends CActiveRecord
 {
+    public static  $dayValue = ['sunday','saturday','friday','thursday','wednesday','tuesday','monday'];
 	/**
 	 * @return string the associated database table name
 	 */
@@ -36,14 +35,13 @@ class CostFloat extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_game, id_place, time_start, time_finish, ts_create', 'required'),
+			array('id_place, day, cost', 'required'),
 			array('time_start, time_finish, active', 'numerical', 'integerOnly'=>true),
-			array('id_game, id_place', 'length', 'max'=>11),
-			array('ts_create', 'length', 'max'=>20),
-			array('day, description', 'safe'),
+			array('id_place', 'length', 'max'=>11),
+			array('time_start, time_finis, description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_game, id_place, time_start, time_finish, day, description, ts_create, active', 'safe', 'on'=>'search'),
+			array('id, id_place, time_start, time_finish, day, description, ts_create, active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +53,6 @@ class CostFloat extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idGame' => array(self::BELONGS_TO, 'Game', 'id_game'),
 			'idPlace' => array(self::BELONGS_TO, 'Place', 'id_place'),
 		);
 	}
@@ -67,9 +64,8 @@ class CostFloat extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_game' => 'Id Game',
 			'id_place' => 'Id Place',
-			'time_start' => 'Time Start',
+			'time_start' => 'Время начала действия цены',
 			'time_finish' => 'Time Finish',
 			'day' => 'Day',
 			'description' => 'Description',
@@ -97,7 +93,6 @@ class CostFloat extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('id_game',$this->id_game,true);
 		$criteria->compare('id_place',$this->id_place,true);
 		$criteria->compare('time_start',$this->time_start);
 		$criteria->compare('time_finish',$this->time_finish);

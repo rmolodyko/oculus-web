@@ -13,11 +13,22 @@
         <div class="c-menu">
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
-                    array('label'=>'Add country', 'url'=>array('create/country')),
-                    array('label'=>'Add city', 'url'=>array('create/city')),
-                    array('label'=>'Add place', 'url'=>array('create/place')),
-                    array('label'=>'Add employee', 'url'=>array('create/employee') /*'visible'=>Yii::app()->user->isGuest*/),
-                    array('label'=>'Add game', 'url'=>array('create/game'))
+                    array('label'=>'-------------'),
+                    array('label'=>'Add country', 'url'=>array('manage/country')),
+                    array('label'=>'Add city', 'url'=>array('manage/city')),
+                    array('label'=>'Add place', 'url'=>array('manage/place')),
+                    array('label'=>'Add employee', 'url'=>array('manage/employee') /*'visible'=>Yii::app()->user->isGuest*/),
+                    array('label'=>'Add game', 'url'=>array('manage/game')),
+                    array('label'=>'Add bind place', 'url'=>array('manage/bindPlace')),
+                    array('label'=>'Add float cost', 'url'=>array('manage/costFloat')),
+                    array('label'=>'-------------'),
+                    array('label'=>'Show country', 'url'=>array('show/country')),
+                    array('label'=>'Show city', 'url'=>array('show/city')),
+                    array('label'=>'Show place', 'url'=>array('show/place')),
+                    array('label'=>'Show game', 'url'=>array('show/game')),
+                    array('label'=>'Show employee', 'url'=>array('show/employee')),
+                    array('label'=>'Show bind place', 'url'=>array('show/bindPlace')),
+                    array('label'=>'Show bind cost', 'url'=>array('show/costFloat')),
                 ),
             )); ?>
         </div>

@@ -15,6 +15,7 @@
  * @property integer $salary_at_shift
  * @property string $ts_create
  * @property integer $active
+ * @property integer $cost
  *
  * The followings are the available model relations:
  * @property Employee $idEmployee
@@ -38,12 +39,11 @@ class Employee2place extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_employee, id_place, salary_at_hour, salary_rate, ts_create', 'required'),
+			array('id_employee, id_place, salary_at_hour, salary_rate', 'required'),
 			array('salary_at_hour, salary_rate, salary_at_shift, active', 'numerical', 'integerOnly'=>true),
 			array('id_employee, id_place', 'length', 'max'=>11),
 			array('shift_work', 'length', 'max'=>50),
-			array('ts_create', 'length', 'max'=>20),
-			array('description, day_work', 'safe'),
+			array('description, day_work, cost', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_employee, id_place, description, day_work, shift_work, salary_at_hour, salary_rate, salary_at_shift, ts_create, active', 'safe', 'on'=>'search'),
