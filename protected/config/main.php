@@ -2,7 +2,8 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
-
+//Путь к подключению пакетов
+$packages = require_once(dirname(__FILE__).'/packages.php');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -13,6 +14,7 @@ return array(
 	'preload'=>array('log'),
 
     'aliases' => array(
+        'gchart' => realpath(__DIR__ . '/../extensions/gchart'), // change this if necessary
         'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change this if necessary
     ),
 	// autoloading model and component classes
@@ -21,6 +23,7 @@ return array(
         'application.models.db.*',
 		'application.components.*',
         'bootstrap.helpers.TbHtml',
+        'gchart.*',
 	),
 
 	'defaultController'=>'post',
@@ -31,11 +34,13 @@ return array(
         'gii'=>array(
             'class'=>'system.gii.GiiModule',
             'password'=>'admin',
-            // 'ipFilters'=>array(…список IP…),
+            'ipFilters'=>array('127.0.0.1','77.47.220.130'),
             // 'newFileMode'=>0666,
             // 'newDirMode'=>0777,
         ),
+        'remote',
         'operate',
+        'analytics',
     ),
 	// application components
 	'components'=>array(
@@ -46,7 +51,9 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
-        /*
+        'clientScript'=>array(
+            'packages'=>$packages,
+        ),        /*
 		'db'=>array(
 			'connectionString' => 'sqlite:protected/data/blog.db',
 			'tablePrefix' => 'tbl_',
@@ -54,10 +61,10 @@ return array(
         */
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=oculus',
+			'connectionString' => 'mysql:host=ef907db.mirohost.net;dbname=oculus',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'u_oculusz',
+			'password' => 'tfmQSsNU',
 			'charset' => 'utf8',
 			'tablePrefix' => 'tbl_',
 		),

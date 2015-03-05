@@ -40,7 +40,7 @@ class Employee2place extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_employee, id_place, salary_at_hour, salary_rate', 'required'),
-			array('salary_at_hour, salary_rate, salary_at_shift, active', 'numerical', 'integerOnly'=>true),
+			//array('salary_at_hour, salary_rate, salary_at_shift, active', 'numerical', 'integerOnly'=>true),
 			array('id_employee, id_place', 'length', 'max'=>11),
 			array('shift_work', 'length', 'max'=>50),
 			array('description, day_work, cost', 'safe'),

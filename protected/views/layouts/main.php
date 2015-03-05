@@ -15,7 +15,17 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+<?php
+        Yii::app()->clientScript->registerCoreScript('jquery');
+        Yii::app()->clientScript->registerPackage('chained');
+        Yii::app()->clientScript->registerPackage('jquery-form');
+        Yii::app()->clientScript->registerPackage('chart');
+?>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+    </script>
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
@@ -31,7 +41,7 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('post/index')),
 				array('label'=>'Manage', 'url'=>array('/operate/manage/country')),
-				array('label'=>'Contact', 'url'=>array('site/contact')),
+				array('label'=>'', 'url'=>array('site/contact')),
 				array('label'=>'Login', 'url'=>array('site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

@@ -32,7 +32,7 @@ class Country extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('active', 'numerical', 'integerOnly'=>true),
+			//array('active', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
 			array('description', 'safe'),
 			// The following rule is used by search().

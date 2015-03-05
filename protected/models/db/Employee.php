@@ -38,7 +38,7 @@ class Employee extends CActiveRecord
 		return array(
             array('email','email'),
 			array('password, email, first_name, last_name, phone', 'required'),
-			array('active', 'numerical', 'integerOnly'=>true),
+			//array('active', 'numerical', 'integerOnly'=>true),
 			array('password, first_name, last_name', 'length', 'max'=>50),
 			array('phone', 'length', 'max'=>20),
 			array('description', 'safe'),

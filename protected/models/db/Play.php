@@ -5,15 +5,14 @@
  *
  * The followings are the available columns in table '{{play}}':
  * @property string $id
- * @property string $id_place
+ * @property string $id_bind
  * @property string $id_game
- * @property string $email
- * @property string $ts_create
+ * @property string $ts
  * @property integer $duration
  *
  * The followings are the available model relations:
  * @property Game $idGame
- * @property Place $idPlace
+ * @property Employee2place $idBind
  */
 class Play extends CActiveRecord
 {
@@ -33,14 +32,13 @@ class Play extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_place, id_game, email, ts_create, duration', 'required'),
-			array('duration', 'numerical', 'integerOnly'=>true),
-			array('id_place, id_game', 'length', 'max'=>11),
-			array('email', 'length', 'max'=>50),
-			array('ts_create', 'length', 'max'=>20),
+			array('id_bind, id_game, ts, duration', 'required'),
+			//array('duration', 'numerical', 'integerOnly'=>true),
+			array('id_bind, id_game', 'length', 'max'=>11),
+			array('ts', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_place, id_game, email, ts_create, duration', 'safe', 'on'=>'search'),
+			array('id, id_bind, id_game, ts, duration', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,7 +51,7 @@ class Play extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'idGame' => array(self::BELONGS_TO, 'Game', 'id_game'),
-			'idPlace' => array(self::BELONGS_TO, 'Place', 'id_place'),
+			'idBind' => array(self::BELONGS_TO, 'Employee2place', 'id_bind'),
 		);
 	}
 
@@ -64,11 +62,10 @@ class Play extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_place' => 'Id Place',
+			'id_bind' => 'Id Bind',
 			'id_game' => 'Id Game',
-			'email' => 'Email',
-			'ts_create' => 'Ts Create',
-			'duration' => 'Duration',
+			'ts' => 'Ts',
+			'duration' => 'Продолжительность воспроизведения видео в секундах',
 		);
 	}
 
@@ -91,10 +88,9 @@ class Play extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('id_place',$this->id_place,true);
+		$criteria->compare('id_bind',$this->id_bind,true);
 		$criteria->compare('id_game',$this->id_game,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('ts_create',$this->ts_create,true);
+		$criteria->compare('ts',$this->ts,true);
 		$criteria->compare('duration',$this->duration);
 
 		return new CActiveDataProvider($this, array(

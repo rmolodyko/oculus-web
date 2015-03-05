@@ -48,6 +48,7 @@ class ManageController extends Controller
 
         if(isset($_POST['City'])){
             $model->attributes = $_POST['City'];
+            //print_r($model);
             if($model->validate()){
                 $model->save();
                 Yii::app()->user->setFlash('status', "Data saved!");
@@ -214,15 +215,4 @@ class ManageController extends Controller
 
 		$this->render('bind_place',['model'=>$model,'place'=>$place,'employee'=>$employee]);
 	}
-
-    //Its method apply in remote connections with desctop application. It have to move to fit class
-    public function actionSelect($id_place){
-        $employee = Employee2place::model()->findAllByAttributes(["id_place"=>$id_place]);
-        $stdClass = new stdClass();
-        foreach($employee as $v){
-            $stdClass->email[] = Employee::model()->findByPk($v->id_employee)->email;
-            $stdClass->id_bind[] = $v->id;
-        }
-        echo json_encode($stdClass);
-    }
 }

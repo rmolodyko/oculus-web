@@ -34,7 +34,7 @@ class City extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_country, name', 'required'),
-			array('active', 'numerical', 'integerOnly'=>true),
+			//array('active', 'numerical', 'integerOnly'=>true),
 			array('id_country', 'length', 'max'=>11),
 			array('name', 'length', 'max'=>50),
 			array('description', 'safe'),

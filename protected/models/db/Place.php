@@ -39,7 +39,7 @@ class Place extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_city, name, address', 'required'),
-			array('active', 'numerical', 'integerOnly'=>true),
+			//array('active', 'numerical', 'integerOnly'=>true),
 			array('id_city', 'length', 'max'=>11),
 			array('name', 'length', 'max'=>50),
 			array('description', 'safe'),

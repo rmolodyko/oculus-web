@@ -5,14 +5,12 @@
  *
  * The followings are the available columns in table '{{session_employee}}':
  * @property string $id
- * @property string $id_employee
- * @property string $id_place
- * @property string $ts_create
- * @property integer $duration
+ * @property string $id_bind
+ * @property string $ts
+ * @property string $action
  *
  * The followings are the available model relations:
- * @property Employee $idEmployee
- * @property Place $idPlace
+ * @property Employee2place $idBind
  */
 class SessionEmployee extends CActiveRecord
 {
@@ -32,13 +30,13 @@ class SessionEmployee extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_employee, id_place, ts_create, duration', 'required'),
-			array('duration', 'numerical', 'integerOnly'=>true),
-			array('id_employee, id_place', 'length', 'max'=>11),
-			array('ts_create', 'length', 'max'=>20),
+			array('id_bind, ts', 'required'),
+			array('id_bind', 'length', 'max'=>11),
+			array('ts', 'length', 'max'=>20),
+			array('action', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_employee, id_place, ts_create, duration', 'safe', 'on'=>'search'),
+			array('id, id_bind, ts, action', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,8 +48,7 @@ class SessionEmployee extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idEmployee' => array(self::BELONGS_TO, 'Employee', 'id_employee'),
-			'idPlace' => array(self::BELONGS_TO, 'Place', 'id_place'),
+			'idBind' => array(self::BELONGS_TO, 'Employee2place', 'id_bind'),
 		);
 	}
 
@@ -62,10 +59,9 @@ class SessionEmployee extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_employee' => 'Id Employee',
-			'id_place' => 'Id Place',
-			'ts_create' => 'Ts Create',
-			'duration' => 'Duration',
+			'id_bind' => 'Id Bind',
+			'ts' => 'Ts',
+			'action' => 'Action',
 		);
 	}
 
@@ -88,10 +84,9 @@ class SessionEmployee extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('id_employee',$this->id_employee,true);
-		$criteria->compare('id_place',$this->id_place,true);
-		$criteria->compare('ts_create',$this->ts_create,true);
-		$criteria->compare('duration',$this->duration);
+		$criteria->compare('id_bind',$this->id_bind,true);
+		$criteria->compare('ts',$this->ts,true);
+		$criteria->compare('action',$this->action,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

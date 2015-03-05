@@ -36,7 +36,7 @@ class CostFloat extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_place, day, cost', 'required'),
-			array('time_start, time_finish, active', 'numerical', 'integerOnly'=>true),
+			//array('time_start, time_finish, active', 'numerical', 'integerOnly'=>true),
 			array('id_place', 'length', 'max'=>11),
 			array('time_start, time_finis, description', 'safe'),
 			// The following rule is used by search().
